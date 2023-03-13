@@ -6,16 +6,23 @@ public class Calc {
         int sum = 0;
         if(exp.contains("*") && exp.contains("+")){
             bits = exp.split(" \\+ ");
-            return run(bits[0]) + Integer.parseInt(bits[1]);
-        }
-        if (exp.contains("*")) {
+            for (String num : bits) {
+                System.out.println("num = " + num);
+
+                if(num.contains("*")){
+                    sum += run(num);
+                } else{
+                    sum += Integer.parseInt(num);
+                }
+            }
+        } else if (exp.contains("*")) {
             ++sum;
             bits = exp.split(" \\* ");
             for (String num : bits) {
                 int n = Integer.parseInt(num);
                 sum *= n;
             }
-        } else {
+        } else{
             exp = exp.replace("- ", "+ -");
             int result = 0;
 
