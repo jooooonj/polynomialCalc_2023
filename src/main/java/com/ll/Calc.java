@@ -7,14 +7,12 @@ public class Calc {
         if(exp.contains("*") && exp.contains("+")){
             bits = exp.split(" \\+ ");
             for (String num : bits) {
-                System.out.println("num = " + num);
-
-                if(num.contains("*")){
-                    sum += run(num);
-                } else{
-                    sum += Integer.parseInt(num);
-                }
+                sum += run(num);
             }
+        } else if(exp.contains("*") && exp.contains("-")){
+            String str ="";
+            bits = exp.split(" - ");
+            return run(bits[0]) - run(bits[1]);
         } else if (exp.contains("*")) {
             ++sum;
             bits = exp.split(" \\* ");
